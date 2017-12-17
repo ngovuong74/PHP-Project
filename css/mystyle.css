@@ -1,0 +1,9 @@
+body {
+    background-image: url("../img/login.jpg");
+    background-size: 100%;
+    background-color: #cccccc;
+}
+
+.my-panel {
+    margin-top: 70px;
+}
