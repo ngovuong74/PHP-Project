@@ -4,11 +4,11 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $result = mysqli_query($dbhandle, "select * from librarian where idLibrarian = '$username' and Password = '$password'")
+    $result = mysqli_query($dbhandle, "select * from users where UserName = '$username' and Password = '$password'")
         or die("Failed to connect database ");
 
     $row = mysqli_fetch_array($result);
-    if($row['idLibrarian'] == $username && $row['Password'] == $password) {
+    if($row['UserName'] == $username && $row['Password'] == $password) {
         
         // $_SESSION['userID'] = $row['idLibrarian'];
         header("Location: ../home.html");
