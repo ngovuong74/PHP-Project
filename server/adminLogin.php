@@ -11,7 +11,7 @@
     if($row['idLibrarian'] == $username && $row['Password'] == $password) {
         
         // $_SESSION['userID'] = $row['idLibrarian'];
-        header("Location: addbookform.php");
+        header("Location: ../addbookform.html");
     }
     else {
         header("Location: ../adminLogin.html");

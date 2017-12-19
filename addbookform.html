@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add a Book</title>
+</head>
+
+<body>
+    <form action="add.php" method="post">
+        <label>Id :
+            <input type="text" name="isbnBook" id="isbnBook" maxlength="1000000000" required placeholder="ID of the book" </label>
+            <br>
+
+            <label>Name:
+                <input type="text" name="Title" id="Title" maxlength="100" required placeholder="Name of the book" />
+                </lable>
+                <br>
+
+                <label>Genre :
+                    <input type="text" name="genre" id="genre" maxlength="100" required placeholder="Genre of the book" />
+                    </lable>
+                    <br>
+
+                    <label>Quantity :
+                        <input type="number" name="Quantity" id="Quantity" required placeholder="Quantity of the book" min="1" max="100" step="1"
+                        />
+                    </label>1~10
+                    <br>
+
+                    <input type="submit" value="Add">
+                    <input type="reset" value="Clear">
+
+</body>
+
+
+</html>

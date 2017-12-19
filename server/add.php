@@ -1,22 +1,21 @@
 <?php
-$dbhandle = mysqli_connect('localhost','root','');
-mysqli_select_db($dbhandle,'mydb');
+    include("dbconnect.php");
 
-$isbnBook = mysqli_real_escape_string($dbhandle, $_POST['isbnBook']);
-$Title = mysqli_real_escape_string($dbhandle, $_POST['Title']);
-$genre = mysqli_real_escape_string($dbhandle, $_POST['genre']);
-$Quantity = mysqli_real_escape_string($dbhandle, $_POST['Quantity']); //incase input has special variable
+    $isbnBook = mysqli_real_escape_string($dbhandle, $_POST['isbnBook']);
+    $Title = mysqli_real_escape_string($dbhandle, $_POST['Title']);
+    $genre = mysqli_real_escape_string($dbhandle, $_POST['genre']);
+    $Quantity = mysqli_real_escape_string($dbhandle, $_POST['Quantity']); //incase input has special variable
 
-$sql = "INSERT INTO book (`isbnBook`, `Title`, `genre`, `Quantity`) 
-        VALUES ('$isbnBook', '$Title', '$genre', '$Quantity');";
+    $sql = "INSERT INTO book (`isbnBook`, `Title`, `genre`, `Quantity`) 
+            VALUES ('$isbnBook', '$Title', '$genre', '$Quantity');";
 
-if($dbhandle->query($sql)===TRUE)
-{
-    header('Location:'.'phptestdbconnect.php');
-}
-    else
+    if($dbhandle->query($sql)===TRUE)
     {
-    echo "Fail to add information". $sql."<br>".$dbhandle->error;
+        header('Location:'.'phptestdbconnect.php');
     }
-$dbhandle->close();
+        else
+        {
+        echo "Fail to add information". $sql."<br>".$dbhandle->error;
+        }
+    $dbhandle->close();
 ?>
