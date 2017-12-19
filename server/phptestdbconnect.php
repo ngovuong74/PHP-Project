@@ -1,7 +1,3 @@
-<!-- <?php
-	include('dbconnection.php');
-	$bookDB = connectTable("book");
-?> -->
 
 <html>
 	<head>
@@ -84,7 +80,8 @@
 			</tfoot>
 			<tbody>
 				<?php
-					$dbhandle = mysqli_connect('localhost','root','','mydb');
+					// $dbhandle = mysqli_connect('localhost','root','','mydb');
+					$dbhandle = mysqli_connect('localhost','root','','cs4443');
 					if($dbhandle->connect_errno)
 					{
 						echo "Fail to connect(".$dbhandle->connect_errno.")".$dbhandle->connect_error;
