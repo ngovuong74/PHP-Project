@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include("dbconnect.php");
 
     $username = $_POST['username'];
@@ -10,7 +11,7 @@
     $row = mysqli_fetch_array($result);
     if($row['UserName'] == $username && $row['Password'] == $password) {
         
-        // $_SESSION['userID'] = $row['idLibrarian'];
+        $_SESSION['userID'] = $row['UserName'];
         header("Location: ../home.html");
     }
     else {

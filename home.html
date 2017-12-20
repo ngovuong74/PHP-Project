@@ -14,35 +14,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="js/home.js" type="text/javascript"></script>
     <script>
-        $(function () {
-            var availableTags = [
-                "ActionScript",
-                "AppleScript",
-                "Asp",
-                "BASIC",
-                "C",
-                "C++",
-                "Clojure",
-                "COBOL",
-                "ColdFusion",
-                "Erlang",
-                "Fortran",
-                "Groovy",
-                "Haskell",
-                "Java",
-                "JavaScript",
-                "Lisp",
-                "Perl",
-                "PHP",
-                "Python",
-                "Ruby",
-                "Scala",
-                "Scheme"
-            ];
-            $("#search").autocomplete({
-                source: availableTags
+        var bookId = "";
+        getBooks();
+
+        function getBooks() {
+            $.ajax({
+                url: 'server/bookDB.php',
+                data: "",
+                dataType: 'json',
+                success: function (response) {
+                    var trHTML = '';
+                    var data = [];
+                    var search = [];
+
+                    response.forEach(element => {
+                        let object1 = {
+                            isbn: element[0],
+                            title: element[1],
+                            genre: element[2],
+                            quantity: element[3]
+                        }
+                        let object2 = {
+                            key: element[0],
+                            value: element[1]
+                        }
+
+                        data.push(object1);
+                        search.push(object2);
+                    });
+                    console.log(search)
+
+                    $("#search").autocomplete({
+                        source: search,
+                        focus: function (event, ui) {
+                            event.preventDefault();
+                            $("#search").val(ui.item.value);
+                            return false;
+                        },
+                        select: function (event, ui) {
+                            let result = data.find(element => element.isbn == ui.item.key);
+                            if (result) {
+                                $("#btnBorrow").removeAttr("disabled");
+                                bookId = result.isbn;
+                                trHTML = '<tr><td>' + result.isbn + '</td><td>' + result.title + '</td><td>' + result.genre + '</td><td>' + result.quantity + '</td></tr>';
+                                $('#book_table').html(trHTML);
+                            }
+                        }
+                    });
+
+                }
             });
-        });
+        }
+
+        function borrowClick() {
+            if (confirm("Do you want to borrow this book?")) {
+                console.log("Click my ass " + bookId);
+                $.ajax({
+                    url: 'server/borrowform.php?q=' + bookId,
+                    data: "",
+                    success: function (data) {
+                        alert(data);
+                        location.reload();
+                    }
+                })
+            }
+        }
     </script>
 </head>
 
@@ -61,9 +97,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                    <!-- <li>
                         <a href="#">Profile</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="login.html">Logout</a>
                     </li>
@@ -89,23 +125,24 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
                 <div class="tab-content">
                     <div id="online" class="tab-pane fade in active">
-                        <h1 class="page-header">Available Books</h1>
-                        <form class="navbar-form navbar-left">
+                        <h1 class="page-header">Search your book!</h1>
+                        <form class="navbar-form">
                             <input type="text" id="search" class="form-control" placeholder="Search...">
                         </form>
                         <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>#ISBN</th>
-                                            <th>Tittle</th>
-                                            <th>Genre</th>
-                                            <th>Quantity</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="book_table"></tbody>
-                                </table>
-                            </div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#ISBN</th>
+                                        <th>Tittle</th>
+                                        <th>Genre</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="book_table"></tbody>
+                            </table>
+                            <button type="button" class="btn btn-default" id="btnBorrow" disabled="disabled" onclick="borrowClick()">Borrow</button>
+                        </div>
                     </div>
 
                     <div id="borrowed" class="tab-pane fade">
@@ -115,9 +152,7 @@
                                 <thead>
                                     <tr>
                                         <th>#ISBN</th>
-                                        <th>Tittle</th>
-                                        <!-- <th>Genre</th>
-                                        <th>Authors</th> -->
+                                        <th>User</th>
                                         <th>Date Borrowed</th>
                                         <th>Date Returned</th>
                                     </tr>
