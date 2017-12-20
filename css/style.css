@@ -1,0 +1,99 @@
+
+
+/* ===========================
+   ======= Body style ======== 
+   =========================== */
+
+body {
+	padding: 50px 100px;
+	font-size: 13px;
+	font-style: Verdana, Tahoma, sans-serif;
+}
+
+h2 {
+	margin-bottom: 20px;
+	color: #474E69;
+}
+
+legend {
+	margin-bottom: 20px;
+	color: rgb(104, 105, 71);
+}
+
+/* ===========================
+   ====== Contact Form ======= 
+   =========================== */
+
+input, textarea {
+	padding: 10px;
+	border: 1px solid #E5E5E5;
+	width: 200px;
+	color: #999999;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;		
+}
+
+textarea {
+	width: 400px;
+	height: 150px;
+	max-width: 400px;
+	line-height: 18px;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	border-color: 1px solid #C9C9C9;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 8px;	
+}
+
+.form label {
+	margin-left: 10px;
+	color: #999999;
+}
+
+/* ===========================
+   ====== Submit Button ====== 
+   =========================== */
+
+.submit input {
+	width: 100px; 
+	height: 40px;
+	background-color: #474E69; 
+	color: #FFF;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;		
+}
+
+.btn {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;}
+.success {background-color: #4CAF50;} /* Green */
+.success:hover {background-color: #46a049;}
+
+.info {background-color: #2196F3;} /* Blue */
+.info:hover {background: #0b7dda;}
+
+.warning {background-color: #ff9800;} /* Orange */
+.warning:hover {background: #e68a00;}
+
+.danger {background-color: #f44336;} /* Red */ 
+.danger:hover {background: #da190b;}
+
+.default {background-color: #e7e7e7; color: black;} /* Gray */ 
+.default:hover {background: #ddd;}
+
+table {
+    margin-top: 35px;
+    margin-bottom: 25px;
+    
+        border-collapse: collapse;
+        width: 100%;
+    
+  }

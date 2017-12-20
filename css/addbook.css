@@ -1,0 +1,9 @@
+body {
+    background-image: url("../img/addabook.jpg");
+    background-size: 100%;
+    background-color: #cccccc00;
+}
+
+.my-panel {
+    margin-top: 70px;
+}

@@ -2,64 +2,44 @@
 <html>
 	<head>
 		<title>Book data</title>
-		<style>
-			.btn {
-   			 border: none;
-   			 color: white;
-   			 padding: 14px 28px;
-   			 font-size: 16px;
-   			 cursor: pointer;}
-			.success {background-color: #4CAF50;} /* Green */
-			.success:hover {background-color: #46a049;}
-
-			.info {background-color: #2196F3;} /* Blue */
-			.info:hover {background: #0b7dda;}
-
-			.warning {background-color: #ff9800;} /* Orange */
-			.warning:hover {background: #e68a00;}
-
-			.danger {background-color: #f44336;} /* Red */ 
-			.danger:hover {background: #da190b;}
-
-			.default {background-color: #e7e7e7; color: black;} /* Gray */ 
-			.default:hover {background: #ddd;}
-
-			table {
-    				border-collapse: collapse;
-    				width: 100%;
-					}
-
-			th, td {
-    			text-align: center;
-   				 padding: 8px;
-					}
-
-	tr:nth-child(even) {background-color: #f2f2f2;}
-	th {
-    background-color: #4CAF50;
-    color: white;
-}
-		</style>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/index.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
-	<script type="text/javascript">
-		function buttonclick()
-		{
-		window.location="../addbookform.html";
-		}
-	</script>
 
-	<script type="text/javascript">
-		function clickbutton()
-		{
-		window.location="update.php";
-		}
-	</script>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Library Book Management Website</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="../adminLogin.html">Logout</a>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                </div>
+            </nav>
+    <div class="wrapper">
+	<div class="container-fluid">
+        <div class="row">
+		<div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
 
-	<h1><center>BOOK DATA MANGEMENT</center></h1>
-		<table align ="center" width="600" border = "1" cellpaddin = "1" cellspacing ="1" id ="mydata">
-			<caption><strong>Book data</strong></caption>
+		<table  id ="mydata" >
+		<h1>Book Management</h1>
+		<hr>
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -69,19 +49,10 @@
 					<th>Action</th>
 				</tr>
 			</thead>
-			<tfoot>
-				<tr>
-					<th>Id</th>
-					<th>Title</th>
-					<th>Genre</th>
-					<th>Quantity</th>
-					<th>Action</th>
-				</tr>
-			</tfoot>
+			
 			<tbody>
 				<?php
-					// $dbhandle = mysqli_connect('localhost','root','','mydb');
-					$dbhandle = mysqli_connect('localhost','root','','cs4443');
+					$dbhandle = mysqli_connect('localhost','root','','mydb');
 					if($dbhandle->connect_errno)
 					{
 						echo "Fail to connect(".$dbhandle->connect_errno.")".$dbhandle->connect_error;
@@ -97,9 +68,9 @@
 					<td><?php echo $book['Quantity']?></td>
 					<td>
 					
-					<a href="update.php?idd=<?php echo $book['isbnBook'] ?>">Edit</a>
+					<a class="btn btn-success" href="update.php?idd=<?php echo $book['isbnBook'] ?>">Edit</a>
 
-						<a onclick="return confirm('Are your sure?')" 
+						<a class="btn btn-info" onclick="return confirm('Are your sure?')" 
 						href="phptestdbconnect.php?idd=<?php echo $book['isbnBook'] ?>">
 						Delete</a>
 						
@@ -133,8 +104,30 @@
 						}
 					?>
 				</tr>
+
+				
 			</tbody>
 		</table>
 		<center><button type = "button" class="btn success" onclick="buttonclick()">Add a book</button></center>
+					</div>	
+	</div>
+	</div>
+					
+	
+	
+		<script type="text/javascript">
+		function buttonclick()
+		{
+		window.location="../addbookform.html";
+		}
+	</script>
+
+	<script type="text/javascript">
+		function clickbutton()
+		{
+		window.location="update.php";
+		}
+	</script>
+ 
 	</body>
 </html>

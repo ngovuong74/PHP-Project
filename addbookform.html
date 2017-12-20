@@ -1,35 +1,123 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <title>Add a book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Add a Book</title>
 </head>
 
 <body>
-    <form action="add.php" method="post">
-        <label>Id :
-            <input type="text" name="isbnBook" id="isbnBook" maxlength="1000000000" required placeholder="ID of the book" </label>
-            <br>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Book Adding Management Website</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="adminLogin.html">Logout</a>
+                    </li>
+                </ul>
 
-            <label>Name:
-                <input type="text" name="Title" id="Title" maxlength="100" required placeholder="Name of the book" />
-                </lable>
-                <br>
+            </div>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <div class="container">
+               
+            <h3>ADD A BOOK FORM</h3>
+            <form class="form-horizontal" action='server/add.php' method="POST">
+                <fieldset>
+                    <div id="legend">
 
-                <label>Genre :
-                    <input type="text" name="genre" id="genre" maxlength="100" required placeholder="Genre of the book" />
-                    </lable>
-                    <br>
+                        <legend class="">Book Information</legend>
 
-                    <label>Quantity :
-                        <input type="number" name="Quantity" id="Quantity" required placeholder="Quantity of the book" min="1" max="100" step="1"
-                        />
-                    </label>1~10
-                    <br>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">ID: </label>
+                        <div class="controls">
+                            <input type="text" name="isbnBook" id="isbnBook" maxlength="1000000000" required placeholder="ID of the book" class="input-xlarge">
+                        </div>
+                    </div>
 
-                    <input type="submit" value="Add">
-                    <input type="reset" value="Clear">
+                    <div class="control-group">
+                        <label class="control-label">Name: </label>
+                        <div class="controls">
+                            <input type="text" name="Title" id="Title" maxlength="100" required placeholder="Name of the book" class="input-xlarge">
+                        </div>
+                    </div>
 
+                    <div class="control-group">
+                        <label class="control-label">Genre: </label>
+                        <div class="controls">
+                            <input type="text" name="genre" id="genre" maxlength="100" required placeholder="Genre of the book" class="input-xlarge">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Quantity: </label>
+                        <div class="controls">
+                            <input type="number" name="Quantity" id="Quantity" required placeholder="Quantity of the book" min="1" max="100" step="1"
+                                class="input-xlarge">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-success">Add</button>
+                            <button type="reset" class="btn btn-info">Clear</button>
+                            <button type="back" class="btn btn-success" onclick="clickme1()">Back</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+
+            <!-- <form id="contactform" name="contact" method="post" action="#">
+                                <p class="note"><span class="req">*</span> Asterisk fields are required</p>
+                                <div class="row">
+                                  <label for="name">Your Name <span class="req">*</span></label>
+                                  <input type="text" name="name" id="name" class="txt" tabindex="1" placeholder="Steve Jobs" required>
+                                </div>
+                               
+                                <div class="row">
+                                  <label for="email">E-mail Address <span class="req">*</span></label>
+                                  <input type="email" name="email" id="email" class="txt" tabindex="2" placeholder="address@domain.com" required>
+                                </div>
+                               
+                                <div class="row">
+                                  <label for="subject">Subject <span class="req">*</span></label>
+                                  <input type="text" name="subject" id="subject" class="txt" tabindex="3" placeholder="Advertising/Press Ideas" required>
+                                </div>
+                               
+                                <div class="row">
+                                  <label for="message">Message <span class="req">*</span></label>
+                                  <textarea name="message" id="message" class="txtarea" tabindex="4" required></textarea>
+                                </div>
+                               
+                                <div class="center">
+                                  <input type="submit" id="submitbtn" name="submitbtn" tabindex="5" value="Send Message">
+                                </div>
+                    </form> -->
+        </div>
+    </div>
+    <script type="text/javascript">
+		function clickme1()
+		{
+		window.location="server/phptestdbconnect.php";
+		}
+    </script>
 </body>
 
 
