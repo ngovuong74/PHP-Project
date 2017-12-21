@@ -37,13 +37,14 @@
         <div class="row">
 		<div class="col-sm-9 col-sm-offset-1 col-md-10 col-md-offset-1 main">
 
-		<table  id ="mydata" >
+		<table  id ="mydata">
 		<h1>Book Management</h1>
 		<hr>
 			<thead>
 				<tr>
 					<th>Id</th>
 					<th>Title</th>
+					<th>Authors</th>
 					<th>Genre</th>
 					<th>Quantity</th>
 					<th>Action</th>
@@ -52,18 +53,15 @@
 			
 			<tbody>
 				<?php
-					$dbhandle = mysqli_connect('localhost','root','','mydb');
-					if($dbhandle->connect_errno)
-					{
-						echo "Fail to connect(".$dbhandle->connect_errno.")".$dbhandle->connect_error;
-					}
-					$sql = $dbhandle->query("SELECT isbnBook,Title,genre,Quantity from book");
+					include('dbconnect.php');
+					$sql = $dbhandle->query("SELECT isbnBook,Title,Authors,genre,Quantity from book");
 					while($book=$sql->fetch_assoc()){
 				?>
 
 				<tr>
 					<td><?php echo $book['isbnBook']?></td>
 					<td><?php echo $book['Title']?></td>
+					<td><?php echo $book['Authors']?></td>
 					<td><?php echo $book['genre']?></td>
 					<td><?php echo $book['Quantity']?></td>
 					<td>
@@ -96,7 +94,7 @@
 						{
 					?>
 					<script>
-						alert("Not Success to delete");
+						alert("Not Success to delete Because a User is borrowing it");
 						window.location='phptestdbconnect.php';
 					</script>
 					<?php
@@ -108,7 +106,9 @@
 				
 			</tbody>
 		</table>
-		<center><button type = "button" class="btn success" onclick="buttonclick()">Add a book</button></center>
+		<center><button type = "button" class="btn success" onclick="buttonclick()">Add a book</button>
+		<button type = "button" class="btn success" onclick="clickreturn()">Return book</button></center>
+		
 					</div>	
 	</div>
 	</div>
@@ -119,6 +119,12 @@
 		function buttonclick()
 		{
 		window.location="../addbookform.html";
+		}
+	</script>
+			<script type="text/javascript">
+		function clickreturn()
+		{
+		window.location="return.php";
 		}
 	</script>
 

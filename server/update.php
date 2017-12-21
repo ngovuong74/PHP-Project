@@ -18,18 +18,22 @@
 	</script>
     <?php
     $id = $_GET['idd'];
-    $dbhandle = mysqli_connect('localhost','root','','mydb');
+    include('dbconnect.php');
     $sql = $dbhandle->query("SELECT * FROM book where isbnBook = '$id'");
     $result=$sql->fetch_assoc();
     if(isset($_POST['update']))
     {
         $sd = $_POST['isbnBook'];
-        $tit = $_POST['Title']; 
+        $tit = $_POST['Title'];
+        $au = $_POST['Authors']; 
         $gen = $_POST['genre'];
         $quan = $_POST['Quantity'];
 
-        $record = $dbhandle->query("UPDATE book set Title='$tit', genre ='$gen', Quantity='$quan' 
-        Where isbnBook='$sd'");
+
+        $record = $dbhandle->query("UPDATE book SET isbnBook = '$sd', Title = '$tit', 
+                                    Authors = '$au', genre = '$gen', Quantity = '$quan' 
+                                    WHERE isbnBook = $sd");
+
         if($record){
     ?>
                 <script>
@@ -94,6 +98,14 @@
                     </div>
 
                     <div class="control-group">
+                        <label class="control-label">Authors: </label>
+                        <div class="controls">
+                            <input type = "text"name = "Authors" id="Authors" maxlength="100"
+                            value ="<?php echo $result['Authors'] ?>" class="input-xlarge">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
                         <label class="control-label">Genre: </label>
                         <div class="controls">
                             <input type = "text" name = "genre" id="genre" maxlength="100"
@@ -120,29 +132,6 @@
                     </div>
                 </fieldset>
             </form>
-    <!-- <form method="post">
-            <label>Id : 
-            <input type ="text"  name = "isbnBook" id="isbnBook"maxlength = "1000000000"
-            value ="<?php echo $result['isbnBook'] ?>"></label><br>
-
-            <label>Name: 
-            <input type = "text"name = "Title" id="Title" maxlength="100"
-            value ="<?php echo $result['Title'] ?>" ></lable><br>
-
-            <label>Genre : 
-            <input type = "text" name = "genre" id="genre"maxlength="100"
-            value ="<?php echo $result['genre'] ?>" </lable><br>
-
-            <label>Quantity : 
-            <input type ="number" name = "Quantity" id="Quantity"
-            value ="<?php echo $result['Quantity'] ?>" 
-            min ="1"
-            max = "100"
-            step ="1" />
-            </label><br>
-
-            <button type = "submit" class="btn success" name="update">Update</button>
-            <button type = "button" class="btn info" onclick="clickme()">Back</button>
-    </form> -->
+  
     </body>
 </html>
