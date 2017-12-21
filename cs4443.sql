@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2017 at 06:03 PM
+-- Generation Time: Dec 21, 2017 at 04:15 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.1.12
 
@@ -41,10 +41,13 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`isbnBook`, `Title`, `Authors`, `genre`, `Quantity`) VALUES
-(111111, 'The first book', '', 'test', 0),
-(222222, 'The second book', '', 'test', 2),
-(444444, 'Book of test', '', 'test', 0),
-(3333333, 'Another book', '', 'test', 5);
+(13608916, 'System Analysis & Design', 'Kenneth E. Kendall', 'Science', 10),
+(132151005, 'American Literature', 'Le Thi Thanh', 'American Literature', 10),
+(132151006, 'Internet & World Wide Web How to Program', 'Paul J. Deitel', 'Science', 10),
+(132151007, 'Norton Anthology of American Literature', 'Harris', 'Fiction', 10),
+(132151008, 'A Writer’s Reference', 'Hacker, Diana', 'Horror', 10),
+(132151009, 'An Object-Oriented Approach with UML', 'Alan Dennis', 'Science', 10),
+(136089162, 'Course Technology', 'Gary B. Shelly', 'Science', 10);
 
 -- --------------------------------------------------------
 
@@ -75,19 +78,10 @@ INSERT INTO `librarian` (`idLibrarian`, `Password`, `FirstName`, `LastName`) VAL
 CREATE TABLE `users` (
   `UserName` varchar(15) NOT NULL,
   `Password` varchar(45) DEFAULT NULL,
+  `Email` varchar(30) NOT NULL,
   `fname` varchar(45) DEFAULT NULL,
   `lname` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`UserName`, `Password`, `fname`, `lname`) VALUES
-('abc', '123abc', 't', 'm'),
-('tmai', 'kenpro1996', 'tuan', 'mai'),
-('user1', 'user1', 'tuan', 'mai'),
-('user2', 'user2', 'tuan', 'mai');
 
 -- --------------------------------------------------------
 
@@ -102,17 +96,6 @@ CREATE TABLE `user_borrow_book` (
   `DateBorrowed` varchar(30) NOT NULL,
   `DateReturned` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `user_borrow_book`
---
-
-INSERT INTO `user_borrow_book` (`borrowId`, `Users_UserName`, `Book_isbnBook`, `DateBorrowed`, `DateReturned`) VALUES
-(1, 'user1', 222222, '', ''),
-(2, 'user1', 222222, '2017/12/20', ''),
-(3, 'user1', 222222, '20/12/2017', ''),
-(4, 'user1', 3333333, '20/12/2017', ''),
-(7, 'tmai', 222222, '20/12/2017', '');
 
 --
 -- Indexes for dumped tables
@@ -152,7 +135,7 @@ ALTER TABLE `user_borrow_book`
 -- AUTO_INCREMENT for table `user_borrow_book`
 --
 ALTER TABLE `user_borrow_book`
-  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `borrowId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
