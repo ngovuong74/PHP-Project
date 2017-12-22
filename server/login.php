@@ -4,6 +4,8 @@
 
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $username = trim($username);
+    $password = trim($password);
 
     $result = mysqli_query($dbhandle, "select * from users where UserName = '$username' and Password = '$password'")
         or die("Failed to connect database ");

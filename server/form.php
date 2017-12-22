@@ -41,7 +41,8 @@
 		<hr>
 			<thead>
 				<tr>
-					<th>Borrow ID</th>
+                    <th>Borrow ID</th>
+                    <th>User</th>
                     <th>Book ID</th>
 					<th>Date Borrowed</th>
 					<th>Date Returned</th>
@@ -56,7 +57,8 @@
 				?>
 
 				<tr>
-					<td><?php echo $user['borrowId']?></td>
+                    <td><?php echo $user['borrowId']?></td>
+                    <td><?php echo $user['Users_UserName']?></td>
 					<td><?php echo $user['Book_isbnBook']?></td>
 					<td><?php echo $user['DateBorrowed']?></td>
 					<td><?php echo $user['DateReturned']?></td>

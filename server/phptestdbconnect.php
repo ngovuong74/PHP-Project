@@ -106,8 +106,13 @@
 				
 			</tbody>
 		</table>
-		<center><button type = "button" class="btn success" onclick="buttonclick()">Add a book</button>
-		<button type = "button" class="btn success" onclick="clickreturn()">Return book</button></center>
+		
+		<center>
+			<div class="margin-bottom-50">
+				<button type = "button" class="btn success" onclick="buttonclick()">Add a book</button>
+				<button type = "button" class="btn success" onclick="clickreturn()">Return book</button>
+			</div>
+		</center>
 		
 					</div>	
 	</div>

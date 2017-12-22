@@ -38,32 +38,30 @@
                     <fieldset>
                         <div id="legend">
                             
-                                <legend class="">ID of User</legend>
+                                <legend>Return Book</legend>
                             
                         </div>
                         <div class="control-group">
-                            <label class="control-label">User ID: </label>
+                            <label class="control-label">Username: </label>
                             <div class="controls">
-                                <input type ="text"  placeholder ="ID of User" name = "borrowId" id="borrowId" maxlength = "1000000000" class="input-xlarge">
+                                <input type ="text"  placeholder ="Username" name = "borrowId" id="borrowId" maxlength = "1000000000" class="input-xlarge">
                             </div>
                         </div>
 
-                        </div>
                         <div class="control-group">
-                            <label class="control-label">Book ID: </label>
+                            <label class="control-label">Borrowed Book ID: </label>
                             <div class="controls">
                                 <input type ="text"  placeholder ="ID of Book" name = "isbnBook" id="isbnBook" maxlength = "1000000000" class="input-xlarge">
                             </div>
                         </div>
-                        
-                        <div class="control-group">
-                        <div class="controls">
-                            <button type = "submit" class="btn success" name="sunmit" id="submit" onclick="clicktogo()"
-                            >Submit</button>
-                        </div>
-                    </div>
+
+                        <button type = "submit" class="btn success" name="sunmit" id="submit" onclick="clicktogo()">Submit</button>
+                        <a href="phptestdbconnect.php" type = "button" class="btn success" id="back" style="margin-top: 10px;">Back</a>
                     </fieldset>
-</form>
+                </form>         
+            </div>
+            </div>
+                        
                 
 </body>
 
